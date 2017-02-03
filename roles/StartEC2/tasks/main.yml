@@ -1,0 +1,7 @@
+---
+ - name: Start EC2 instance
+     module: ec2
+     instance_ids: "{{ ec2_instance_ids }}"
+     state: 'running'
+     wait: True
+...

@@ -1,0 +1,9 @@
+---
+ - hosts: localhost
+   become: no
+   connection: local
+   gather_facts: no
+   pre_tasks:
+    - include_vars: ec2-vars/ec2variables.yml
+   roles:
+    - StopEC2

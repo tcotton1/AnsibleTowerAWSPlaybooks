@@ -5,4 +5,16 @@
        state: 'running'
        wait: True
        region: "{{ awsregion }}"
+       
+ - name: Add to in-memory inventory
+   add_host:
+       name: "{{ ec2_instance_ids }}"
+       groups: newgroup
+       
+ - name: Wait until ready
+   wait_for:
+       host: "{{ ansible_ssh_host | default(inventory_hostname) }}"
+       port: 22
+       delay: 45
+       search_regex: OpenSSH
 ...
